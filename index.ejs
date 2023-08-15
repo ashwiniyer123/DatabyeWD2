@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title> Chat App | All chats </title>
+  </head>
+<body>
+  <nav>
+    <div class="site-title">
+      <a href="/"><h1>Chat App</h1></a>
+      <p> A website for chatting </p>
+    </div>
+    <ul>
+      <li><a href="/">Chats</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/chats/create">New Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="chats content">
+    <h2>All Chats</h2>
+
+    <% if (chats.length > 0) { %>
+      <% chats.forEach(chat => { %>
+        <a class="single" href="/chats/<%= chat._id %>">
+          <h3 class="title"><%= chat.title %></h3>
+          <p class="snippet"><%= chat.snippet %></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no chats to display...</p>
+    <% } %>
+    
+  </div>
+
+  <footer>
+    Copyright &copy; Chat App
+  </footer></body>
+</html>

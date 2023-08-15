@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chat App | Details </title>
+  </head>
+<body>
+  <nav>
+    
+      <a href="/"><h1>Chat App</h1></a>
+      <p> A website for chatting </p>
+    
+    <ul>
+      <li><a href="/">Chats</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/chats/create">New Blog</a></li>
+    </ul>
+  </nav>
+
+  
+    <h2><%= chat.title %></h2>
+   
+      <p><%= chat.body %></p>
+   
+    <a data-doc="<%= chat._id %>">delete</a>
+
+
+  <footer>
+    Copyright &copy; Chat App
+  </footer>
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/chats/${trashcan.dataset.doc}`;
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>
